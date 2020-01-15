@@ -54,7 +54,7 @@ int** loadMatrix(char filename[MAX]){
 
     char tempChar[25];
 
-    int** array;
+    int** array = 0;
 
     int countTemp = 0;
     int countRow = 0;
@@ -66,17 +66,25 @@ int** loadMatrix(char filename[MAX]){
     file = fopen(filename, "r");
 
     while ((read = getline(&line, &length, file)) != -1) {
+
         if(line[strlen(line)-1]=='\n')
             line[strlen(line)-1]='\0';
+
         if(countTemp == countRow){
-            size_t newCount = (countRow + 1);
+
+            size_t newCount = countRow + 1;
             int **newPtr = (int**)realloc(array, newCount * sizeof(*array));
+
             if(newPtr == NULL){
+
                 freeMatrix(array, countRow);
                 exit(EXIT_FAILURE);
+
             }
+
             countRow = newCount;
             array = newPtr;
+
         }
         for(int i = 0; i < strlen(line); i++){
             if(line[i] != ','){
@@ -91,7 +99,12 @@ int** loadMatrix(char filename[MAX]){
 
     fclose(file);
 
-    return "";
+    return array;
 }
 
-static void freeMatrix(int **array, size_t size);
+static void freeMatrix(int **array, size_t size){
+    for(int i = 0; i < size; i++){
+        free(array[i]);
+    }
+    free(array);
+}

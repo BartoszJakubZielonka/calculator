@@ -4,8 +4,6 @@ void systemConvert(){
     char system[MAX] = {0};
     char number[MAX] = {0};
     char prec[MAX] = {0};
-    char integral[MAX] = {0};
-    char fractional[MAX] = {0};
 
     char* endptr;
 
@@ -69,15 +67,10 @@ double anyToDecimal(char* number, int system){
 
 void decimalToAny(double number, int system, int prec){
     int i = 0;
-    int length = 0;
     int integral = number;
     double frac = number - integral;
 
-    double positon = 1.0;
-
     char* result, *reversResult;
-
-    positon = 1.0;
 
     result = (char*)malloc(sizeof(char) * MAX);
     reversResult = (char*)malloc(sizeof(char) * MAX);
@@ -89,8 +82,6 @@ void decimalToAny(double number, int system, int prec){
     }
 
     result[i] = '\0';
-
-    length = strlen(result);
 
     int end = i - 1;
 
