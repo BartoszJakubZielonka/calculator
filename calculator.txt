@@ -1,0 +1,11 @@
+->  przelicza dowolną liczbę podaną przez użytkownika w dowolnym systemie od binarnego do 16-tkowego (również z częścią ułamkową)
+    na dowolny system liczbowy ze wskazaną przez użytkownika dokładnością;
+    -> Zrobić przeliczanie z dokladnoscia
+
+->  rozwiązuje numerycznie równania wielomianowe (szuka miejsc zerowych) dowolnego stopnia (max. do 20 podaje użytkownik),
+    z zadaną przez użytkownika dokładnością i w zadanym przez niego przedziale argumentów. Współczynniki wielomianów mają być czytane z pliku,
+    który jest parametrem programu, a wyniki (uzyskane rozwiązania) mają być wyświetlane na monitorze i zapisywane we wskazanym pliku ( drugi parametr programu);
+
+->  mnoży dwie macierze (również sprawdza, czy ich wymiary są poprawne), dane wprowadzane są z pliku, oprócz wymiarów;
+
+->  dodaje dwie macierze (również sprawdza, czy ich wymiary są poprawne), dane wprowadzane są z pliku, oprócz wymiarów;
