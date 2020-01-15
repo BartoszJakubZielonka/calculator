@@ -111,6 +111,9 @@ void decimalToAny(double number, int system, int prec){
     reversResult[i] = '\0';
 
     fprintf(stdout, "Liczba w systemie %d to %s\n", system, reversResult);
+
+    free(result);
+    free(reversResult);
 }
 
 int getIntegralValue(char character){

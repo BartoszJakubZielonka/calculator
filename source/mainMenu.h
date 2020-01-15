@@ -13,7 +13,9 @@
 
 void mainMenu();
 
-int** loadMatrix(char[MAX]);
+void addMatrixs();
+void multiplicationMatrix();
+int** loadMatrix(char[MAX], int*, int*);
 static void freeMatrix(int **array, size_t size);
 
 #endif //MAIN_MENU_H
