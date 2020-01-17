@@ -13,8 +13,6 @@ int** loadMatrix(char filename[MAX], int *row, int *column){
     int countRow = 0;
     int countColumn = 0;
 
-    int j = 0;
-
     size_t length = 0;
     ssize_t read = 0;
 

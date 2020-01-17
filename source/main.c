@@ -3,9 +3,14 @@
 
 #include "mainMenu.h"
 
-int main(int argc, char* argv){
+int main(int argc, char** argv){
 
-    mainMenu();
+    if(argc < 2){
+        fprintf(stderr, "Nie podales plikow do obliczania wielomianow!!!");
+        exit(EXIT_FAILURE);
+    }
+
+    mainMenu(argv[1], argv[2]);
 
     exit(EXIT_SUCCESS);
 }

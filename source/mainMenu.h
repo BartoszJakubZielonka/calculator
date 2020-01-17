@@ -12,6 +12,8 @@
 
 #define DECIMAL 10
 
-void mainMenu();
+void mainMenu(char*, char*);
+
+void polynomial(char*, char*);
 
 #endif //MAIN_MENU_H

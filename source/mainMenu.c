@@ -1,6 +1,6 @@
 #include "mainMenu.h"
 
-void mainMenu(){
+void mainMenu(char* readFilename, char* saveFilename){
     char choice[MAX] = {0};
     char *endptr;
 
@@ -23,8 +23,7 @@ void mainMenu(){
             break;
 
             case 2:
-            //TODO
-            fprintf(stdout, "\n%d\n", tempChoice);
+            polynomial(readFilename, saveFilename);
             break;
 
             case 3:
@@ -44,4 +43,45 @@ void mainMenu(){
             break;
         }
     }
+}
+
+void polynomial(char* readFilename, char* saveFilename){
+    double factor = 0.0;
+    double prec = 0.0;
+    double from = 0.0, to = 0.0;
+
+    FILE* file;
+
+    fprintf(stdout, "Podaj stopien wielomianu(masz 20): ");
+    fscanf(stdin, "%f", &factor);
+
+    while(factor >= 20.0){
+        fprintf(stdout, "Podales zly stopien wielomianu\nPodaj jeszcze raz stopien wielomianu(masz 20): ");
+        fscanf(stdin, "%f", &factor);
+    }
+
+    fprintf(stdout, "Podaj dokladnosc do obliczenia miejsc zerowych: ");
+    fscanf(stdin, "%f", &prec);
+
+    fprintf(stdout, "Podaj przedzial(w formacie od,do): ");
+    fscanf(stdin, "%f,%f", &from, &to);
+
+    int tempNumber = 0, iterator = 0;
+    int* array = 0;
+
+    file = fopen(readFilename, "r");
+    while(fscanf(file, "%d,", &tempNumber) != EOF){
+        iterator++;
+        array = (int*)realloc(array, iterator * sizeof(int));
+        if(array == NULL) exit(EXIT_FAILURE);
+        array[iterator-1] = tempNumber;
+    }
+    fclose(file);
+
+    for(int i = 0; i < iterator; i++){
+        fprintf(stdout, "%d ", array[i]);
+    }
+
+    file = fopen(saveFilename, "w");
+    fclose(file);
 }
