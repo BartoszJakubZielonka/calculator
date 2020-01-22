@@ -35,9 +35,18 @@ void polynomial(char* readFilename, char* saveFilename){
     float* array = 0;
 
     file = fopen(readFilename, "r");
+    if(file == NULL){
+        fprintf(stderr, "Nie udalo sie otworzyc pliku: %s", readFilename);
+        exit(EXIT_FAILURE);
+    }
+
     while(fscanf(file, "%f,", &tempNumber) != EOF){
         iterator++;
         array = (float*)realloc(array, iterator * sizeof(float));
+        if(array == NULL){
+            fprintf(stderr, "Nie udalo zalokowac pamieci na wspolczyniki wielomianu", readFilename);
+            exit(EXIT_FAILURE);
+        }
         if(array == NULL) exit(EXIT_FAILURE);
         array[iterator-1] = tempNumber;
     }
@@ -48,6 +57,10 @@ void polynomial(char* readFilename, char* saveFilename){
     result = findZero(array, prec, from, to, factor, &count);
 
     file = fopen(saveFilename, "w");
+    if(file == NULL){
+        fprintf(stderr, "Nie udalo sie otworzyc pliku: %s", saveFilename);
+        exit(EXIT_FAILURE);
+    }
 
     if(count == 0){
          fprintf(file, "brak miejsc zerowych w przedziale\n");
@@ -61,6 +74,7 @@ void polynomial(char* readFilename, char* saveFilename){
     fclose(file);
 
     free(result);
+    free(array);
 
     fflush(stdin);
 }
